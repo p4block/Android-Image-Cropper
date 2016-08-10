@@ -190,7 +190,7 @@ final class CropWindowMoveHandler {
             dy /= 1.05f;
             mTouchOffset.y -= dy / 2;
         }
-        rect.offset(dx, dy);
+        rect.offset(0, 0);
         snapEdgesToBounds(rect, bounds, snapRadius);
     }
 
@@ -283,6 +283,7 @@ final class CropWindowMoveHandler {
                 adjustTopBottomByAspectRatio(rect, bounds, aspectRatio);
                 break;
             case TOP:
+                adjustTop(rect, y, bounds, snapMargin, aspectRatio, true, true);
                 adjustTop(rect, y, bounds, snapMargin, aspectRatio, true, true);
                 adjustLeftRightByAspectRatio(rect, bounds, aspectRatio);
                 break;
@@ -390,6 +391,7 @@ final class CropWindowMoveHandler {
         }
 
         rect.left = newLeft;
+
     }
 
     /**

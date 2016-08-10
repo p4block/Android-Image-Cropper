@@ -991,6 +991,8 @@ public class CropOverlayView extends View {
         public boolean onScale(ScaleGestureDetector detector) {
             RectF rect = mCropWindowHandler.getRect();
 
+
+
             float x = detector.getFocusX();
             float y = detector.getFocusY();
             float dY = detector.getCurrentSpanY() / 2;
@@ -1000,6 +1002,20 @@ public class CropOverlayView extends View {
             float newLeft = x - dX;
             float newRight = x + dX;
             float newBottom = y + dY;
+
+            float centerX = mCropWindowHandler.getMaxCropWidth()/2;
+            float centerY = mCropWindowHandler.getMaxCropHeight()/2;
+
+
+//            newTop = centerY-dY;
+//            newLeft = centerX-dY;
+//            newRight = centerX+dY;
+//            newBottom = centerY+dY;
+
+            newTop = rect.top - dY/2;
+            newBottom = rect.bottom + dY/2;
+            newLeft = rect.left - dX/2;
+            newRight = rect.right + dX/2;
 
             if(newLeft < newRight &&
                     newTop <= newBottom &&
