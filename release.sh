@@ -1,2 +1,2 @@
 #!/bin/sh
-gradlew clean build generateRelease
+./gradlew clean build generateRelease
